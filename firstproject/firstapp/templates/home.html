@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+</head>
+<body>
+    <h1>학생 이름을 입력해보세요 !!</h1>
+    <form action="{%url 'result' %}" method="POST">
+        {% csrf_token %}
+        <input name="user_name" placeholder="이름을 입력해!" />
+        <br/>
+        <br/>
+        <button type="submit">체크하기</button>
+</body>
+</html>
