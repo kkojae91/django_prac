@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{% comment %} css 사용할 때는 load static 이라는 것을 추가 해주어야 한다. {% endcomment %}
+{% load static %} 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} css 연결을 위함..  {% endcomment %}
+    <link href="stylesheet" type="text/css" href="{% static 'home.css' %}" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>문장을 입력하시면, 글자수를 알려드릴께요!</h1>
+    <form action="{%url 'result'%}" method="POST">
+        {% csrf_token %}
+        <textarea name="text" placeholder="문장을 입력해주세요!" cols='40' rows='10'></textarea>
+        <br/>
+        <br/>
+        <button type="submit">글자수확인하기</button>
+    </form>
+</body>
+</html>
