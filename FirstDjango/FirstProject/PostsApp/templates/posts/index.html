@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='{% static 'posts/style.css' %}' type='text/css' />
+</head>
+<body>
+    {% comment %} 실습 1 {% endcomment %}
+    {% comment %} <h1>Posts</h1>
+    <ul>
+        <li>{{post.body}}</li>
+    </ul>
+    <p>Numbers: {{numbers.0}}</p>
+    <p>User: {{user.name}}</p>
+    <p>User Age: {{user.age}}</p> {% endcomment %}
+    
+{% comment %} 실습2 {% endcomment %}
+    {% comment %} <img id='profile' src="{% static 'posts/images/nara1.jpg' %}"></img>
+
+    <div class='profile_bg'></div> {% endcomment %}
+    {% comment %} <h1>Posts</h1>
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li><span class='field'>Author</span>: {{post.author}} <span class='field'>Body</span>: {{post.body}}</li>
+            {% endfor%}
+        </ul>
+    {% else %}
+        <p>No Posts.</p>
+    {% endif %} {% endcomment %}
+    <h1>Posts</h1>
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>Author: {{post.author}} | Body: {{post.body}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Posts.</p>
+    {% endif %}
+</body>
+</html>
