@@ -11,7 +11,9 @@
     {{class_obj.lecturer}}
     {% for student in student_obj %}
     <ul>
-        <li>{{student.name}}</li>
+        <li>
+            <a href='{% url 'student' student.pk %}'>{{student.name}}</a>
+        </li>
     </ul>
         <br/>
     {% endfor %}

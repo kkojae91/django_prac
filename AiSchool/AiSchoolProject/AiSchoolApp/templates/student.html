@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student</h1>
+    <h2>{{student.name}}</h2>
+    <h3>{{student.phone_num}}</h3>
+    <h3>{{student.intro_text}}</h3>
+    <a href="{% url 'edit' student.pk %}">수정하기 >> </a>
+    </br>
+    </br>
+    <form action="{% url 'delete' student.class_num student.pk %}" method="POST">
+        {% csrf_token %}
+        <button type='submit' onclick="return confirm('정말 삭제하시겠습니까??');">삭제하기</button>
+    </form>    
+</body>
+</html>

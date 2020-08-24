@@ -38,3 +38,32 @@ def add(request, class_pk):
         'class_obj':class_obj
     }
     return render(request, 'add.html',context)
+
+def student(request, student_pk):
+    student = AiStudents.objects.get(pk=student_pk)
+    context = {
+        'student':student
+    }
+    return render(request, 'student.html', context)
+
+def edit(request, student_pk):
+    if request.method == 'POST':
+        AiStudents.objects.filter(pk=student_pk).update(
+            name=request.POST['name'],
+            phone_num=request.POST['phone_num'],
+            intro_text=request.POST['intro_text']
+        )
+        return redirect('student', student_pk)
+
+    student = AiStudents.objects.get(pk=student_pk)
+    context = {
+        'student' : student
+    }
+    return render(request, 'edit.html',context)
+
+def delete(request, class_num ,student_pk):
+    target_student = AiStudents.objects.get(pk=student_pk)
+    target_student.delete()
+
+    class_pk = class_num
+    return redirect('detail', class_pk)
