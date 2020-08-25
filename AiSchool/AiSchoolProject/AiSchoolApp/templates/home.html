@@ -7,6 +7,22 @@
 </head>
 <body>
     <h1>Home</h1>
+    <h2>
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            {{user.get_username}}님, 안녕하세요
+            </br>
+            </br>
+            <button type="submit">로그아웃 >> </button>
+        </form>
+    {% else %}
+        <a href="{% url 'signup' %}">SignUp</a>
+        <br/>
+        <br/>
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    </h2>
     {% for class in class_obj_list %}
         <a href="{% url 'detail' class.pk %}">
             {{class.class_num}}
