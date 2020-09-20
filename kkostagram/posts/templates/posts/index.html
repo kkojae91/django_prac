@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'posts/style.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Posts</h1>
+    {% if posts %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>작 성 자</th>
+                    <th>본 문</th>
+                    <th>게 시 일</th>
+                    <th>상 세</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                    <tr>
+                        <th>{{ post.pk }}</th>
+                        <th>{{ post.user.get_username }}</th>
+                        <th>{{ post.body }}</th>
+                        <th>{{ post.created_at }}</th>
+                        <th><a href="{% url 'posts:detail' post.pk %}">보 기</a></th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No Posts.</p>
+    {% endif %}
+
+    <a href="{% url 'posts:new' %}">글 쓰 기</a>
+</div>
+{% endblock %}

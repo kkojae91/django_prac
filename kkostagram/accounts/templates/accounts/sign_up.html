@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form action="{% url 'accounts:sign_up' %}" method="POST">
+    {% csrf_token %}
+        <h1>Sign Up</h1>
+
+        <div class="form-group">
+            <lable for="username">아이디</lable>
+            <input type="text" id="username" name="username" placeholder="아이디" />
+        </div>
+
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호" />
+        </div>
+
+        <div class="form-group">
+            <label for="password_check">비밀번호확인</label>
+            <input type="password" id="password_check" name="password_check" placeholder="비밀번호확인">
+        </div>
+
+        <button type="submit" class="btn btn-primary">회원가입</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'posts/style.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Post Detail</h1>
+
+    {% if post.image %}
+        <div>
+            <img src="{{ post.image.url }}"></img>
+        </div>
+    {% endif %}
+    <form>
+        <div class="form-group">
+            <label for="body">본문</label>
+            <textarea readonly class="form-control-plaintext" name="body" id="body" cols="40" rows="10">{{ post.body }}</textarea>
+        </div>
+
+        <div>{{ post.created_at }}</div>
+    </form>
+
+    <div>
+        좋아요 수 : {{ post.liked_users.count }}
+    </div>
+
+    {% if user.is_authenticated %}
+        {% if user in post.liked_users.all %}
+            <form action="{% url 'posts:like' post.pk %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Like</button>
+            </form>
+        {% else %}
+            <form action="{% url 'posts:like' post.pk %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Like</button>
+            </form>
+        {% endif %}
+    {% endif %}
+
+    <a href="{% url 'posts:index' %}">목 록</a>
+
+    {% if user == post.user %}
+        <a href="{% url 'posts:edit' post.pk %}">수정하기</a>
+        <a href="{% url 'posts:delete' post.pk %}">삭제하기</a>
+    {% endif %}
+</div>
+{% endblock %}
