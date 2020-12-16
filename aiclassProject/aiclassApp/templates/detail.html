@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>detail</title>
+  </head>
+  <body>
+    <h1>detail</h1>
+    {{class_obj.class_num}} {{class_obj.lecturer}}
+    <ul>
+      {% for student in student_obj %}
+      <li>{{student.name}}</li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'add' class_obj.pk %}">등록하기 > </a>
+  </body>
+</html>

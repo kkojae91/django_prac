@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Home</h1>
+    {% for class in classes %}
+    <div>
+      <a href='{% url "detail" class.pk %}'> {{class.class_num}} {{class.lecturer}} </a>
+    </div>
+    {% endfor %}
+  </body>
+</html>
