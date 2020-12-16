@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>결과 페이지</h1>
+    {% if is_exist %}
+    <div>{{user_name}}은 있어요</div>
+    {% else %}
+    <div>{{user_name}}는 없어요</div>
+    {% endif %}
+  </body>
+</html>
