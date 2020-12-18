@@ -10,7 +10,9 @@
     {{class_obj.class_num}} {{class_obj.lecturer}}
     <ul>
       {% for student in student_obj %}
-      <li>{{student.name}}</li>
+      <li>
+        <a href="{% url 'student' student.pk %}">{{student.name}}</a>
+      </li>
       {% endfor %}
     </ul>
     <a href="{% url 'add' class_obj.pk %}">등록하기 > </a>
